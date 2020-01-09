@@ -1,4 +1,6 @@
 # Dinner Room
+![Logo Projeto Dinner Room](https://raw.githubusercontent.com/orlandoburli/dinner-room/master/documentation/prototype/dinner_room_logo.png)
+
 ## Projeto Dinner Room - Gerenciamento de Mesas e Pedidos para Cielo LIO
 
 Este projeto é uma DEMO usando o SDK da Cielo LIO, com o intuito de estudar suas API's
