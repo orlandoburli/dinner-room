@@ -1,3 +1,5 @@
+(../prototype/dinner_room_logo.png)
+
 # Modelagem
 
 ## Entidades
