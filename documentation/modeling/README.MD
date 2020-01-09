@@ -1,4 +1,4 @@
-(../prototype/dinner_room_logo.png)
+![Logo] (https://raw.githubusercontent.com/orlandoburli/dinner-room/master/documentation/prototype/dinner_room_logo.png)
 
 # Modelagem
 
