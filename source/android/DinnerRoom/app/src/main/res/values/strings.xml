@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">DinnerRoom</string>
+    <string name="logo_dinner_room">Logo Dinner Room</string>
+    <string name="senha_garcom">Senha Garçom</string>
+    <string name="login_garcom">Login Garçom</string>
+    <string name="botao_entrar">Entrar</string>
+    <string name="mensagem_usuario_senha_invalidos">Usuário/Senha inválidos!</string>
+</resources>
