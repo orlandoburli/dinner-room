@@ -60,7 +60,7 @@ class LoginActivityTest {
     @Test
     fun deve_ExibirMensagemDeErro_QuandoInformadoUsuarioIncorreto() {
 
-        val activity = activityTestRule.launchActivity(Intent())
+        activityTestRule.launchActivity(Intent())
 
         preencheUsuarioSenha("josex", "123456")
 
@@ -72,7 +72,7 @@ class LoginActivityTest {
     @Test
     fun deve_ExibirMensagemDeErro_QuandoInformadaSenhaIncorreta() {
 
-        val activity = activityTestRule.launchActivity(Intent())
+        activityTestRule.launchActivity(Intent())
 
         preencheUsuarioSenha("jose", "1234567")
 
@@ -84,7 +84,7 @@ class LoginActivityTest {
     @Test
     fun deve_ExibirMensagemDeErro_QuandoNaoInformadoUsuario() {
 
-        val activity = activityTestRule.launchActivity(Intent())
+        activityTestRule.launchActivity(Intent())
 
         preencheUsuarioSenha("", "1234567")
 
@@ -96,7 +96,7 @@ class LoginActivityTest {
     @Test
     fun deve_ExibirMensagemDeErro_QuandoNaoInformadaSenha() {
 
-        val activity = activityTestRule.launchActivity(Intent())
+        activityTestRule.launchActivity(Intent())
 
         preencheUsuarioSenha("jose", "")
 
@@ -108,7 +108,7 @@ class LoginActivityTest {
     @Test
     fun deve_ExibirMensagemDeErro_QuandoNaoInformadoUsuarioESenha() {
 
-        val activity = activityTestRule.launchActivity(Intent())
+        activityTestRule.launchActivity(Intent())
 
         preencheUsuarioSenha("", "")
 
@@ -120,7 +120,7 @@ class LoginActivityTest {
     @Test
     fun deve_ExibirMensagemDeErro_QuandoClicarDiretoEmEntrar() {
 
-        val activity = activityTestRule.launchActivity(Intent())
+        activityTestRule.launchActivity(Intent())
 
         clicarBotaoEntrar()
 

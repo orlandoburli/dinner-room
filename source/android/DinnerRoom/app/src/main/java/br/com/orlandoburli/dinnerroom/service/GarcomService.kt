@@ -16,8 +16,8 @@ open class GarcomService(
     fun login(login: String, password: String): Garcom {
         val garcom = byLogin(login)
 
-        if (garcom != null) {
-            if (garcom?.login == login && garcom?.senha == password) {
+        garcom?.let {
+            if (garcom.login == login && garcom.senha == password) {
                 return garcom
             }
         }
