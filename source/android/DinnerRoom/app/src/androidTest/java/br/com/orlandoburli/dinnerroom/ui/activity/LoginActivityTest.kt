@@ -159,14 +159,6 @@ class LoginActivityTest {
             .check(matches(isDisplayed()))
     }
 
-    private fun prepararDados() {
-        val garcomDao = garcomDao()
-
-        criaGarcomJose(garcomDao)
-        criaGarcomAlex(garcomDao)
-        criaGarcomCarlos(garcomDao)
-    }
-
     private fun garcomDao(): GarcomDao {
         val db = DbHelper.db(InstrumentationRegistry.getTargetContext())
         val garcomDao = db.garcomDao()
@@ -191,6 +183,14 @@ class LoginActivityTest {
         onView(withId(R.id.layout_login_screen_botao_entrar))
             .check(matches(isDisplayed()))
             .perform(click())
+    }
+
+    private fun prepararDados() {
+        val garcomDao = garcomDao()
+
+        criaGarcomJose(garcomDao)
+        criaGarcomAlex(garcomDao)
+        criaGarcomCarlos(garcomDao)
     }
 
     private fun criaGarcomJose(garcomDao: GarcomDao) {

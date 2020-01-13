@@ -13,23 +13,33 @@ import br.com.orlandoburli.dinnerroom.database.DbHelper
 import br.com.orlandoburli.dinnerroom.exception.garcom.UsuarioSenhaInvalidosException
 import br.com.orlandoburli.dinnerroom.model.Garcom
 import br.com.orlandoburli.dinnerroom.service.GarcomService
+import br.com.orlandoburli.dinnerroom.service.SampleDataService
 import br.com.orlandoburli.dinnerroom.utils.GARCOM_INTENT_PARAMETER
 import kotlinx.android.synthetic.main.layout_login_screen.*
 
-class LoginActivity : Activity() {
+class LoginActivity() : Activity() {
 
-    var contadorCliquesLogo = 0
+    private val CONTADOR_MOSTRA_TOAST_MESSAGE = 4
+    private val CONTADOR_RESETA_DADOS = 7
 
-    val database: AppDatabase by lazy {
+    private var contadorCliquesLogo = 0
+
+    var toastContador: Toast? = null
+
+    private val database: AppDatabase by lazy {
         DbHelper.db(this)
     }
 
-    val garcomDao: GarcomDao by lazy {
+    private val garcomDao: GarcomDao by lazy {
         database.garcomDao()
     }
 
-    val garcomService: GarcomService by lazy {
+    private val garcomService: GarcomService by lazy {
         GarcomService(this, garcomDao)
+    }
+
+    private val sampleService: SampleDataService by lazy {
+        SampleDataService(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +70,6 @@ class LoginActivity : Activity() {
             abreTelaPrincipal(
                 garcomService.login(loginGarcom, senhaGarcom)
             )
-
         } catch (e: UsuarioSenhaInvalidosException) {
             Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
         }
@@ -75,9 +84,23 @@ class LoginActivity : Activity() {
     private fun zerarDados() {
         contadorCliquesLogo++
 
-        if (contadorCliquesLogo >= 5) {
+        if (contadorCliquesLogo >= CONTADOR_MOSTRA_TOAST_MESSAGE && contadorCliquesLogo < CONTADOR_RESETA_DADOS) {
+
+            this.toastContador?.let {
+                toastContador!!.cancel()
+            }
+
+            toastContador = Toast.makeText(
+                this,
+                "Você precisa clicar mais ${CONTADOR_RESETA_DADOS - (contadorCliquesLogo)} vezes",
+                Toast.LENGTH_SHORT
+            )
+            toastContador!!.show()
+        }
+
+        if (contadorCliquesLogo >= CONTADOR_RESETA_DADOS) {
             configuraDialogConfirmacaoZeraDados { _, _ ->
-                garcomService.sample()
+                sampleService.sample()
             }
 
             contadorCliquesLogo = 0

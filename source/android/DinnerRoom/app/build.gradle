@@ -8,8 +8,6 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'org.sonarqube'
 
-//apply plugin: 'com.justpinch.androidanalyzer'
-
 def databaseName = "DATABASE_NAME"
 
 sonarqube {
@@ -72,4 +70,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 }

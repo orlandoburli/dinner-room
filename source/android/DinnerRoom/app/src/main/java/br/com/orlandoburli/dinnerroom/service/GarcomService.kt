@@ -21,7 +21,6 @@ open class GarcomService(
                 return garcom
             }
         }
-
         throw UsuarioSenhaInvalidosException(context.getString(R.string.mensagem_usuario_senha_invalidos))
     }
 
@@ -31,18 +30,5 @@ open class GarcomService(
                 return garcomDao.byLogin(login)
             }
         }.execute().get()
-    }
-
-    fun sample() {
-        object : AsyncTask<Void, Void, Void>() {
-            override fun doInBackground(vararg params: Void?): Void? {
-                sampleData()
-                return null
-            }
-        }.execute()
-    }
-
-    private fun sampleData() {
-        garcomDao.add(Garcom(nome = "Jose dos Santos", login = "jose", senha = "123456"))
     }
 }
