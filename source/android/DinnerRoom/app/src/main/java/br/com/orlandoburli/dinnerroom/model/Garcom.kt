@@ -7,7 +7,7 @@ import java.io.Serializable
 @Entity
 class Garcom(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    val id: Long = 0,
     val nome: String,
     val login: String,
     val senha: String

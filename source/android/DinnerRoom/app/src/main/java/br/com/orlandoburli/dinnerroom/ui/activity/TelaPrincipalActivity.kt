@@ -1,7 +1,9 @@
 package br.com.orlandoburli.dinnerroom.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.com.orlandoburli.dinnerroom.R
 import br.com.orlandoburli.dinnerroom.model.Garcom
@@ -9,22 +11,22 @@ import br.com.orlandoburli.dinnerroom.model.Mesa
 import br.com.orlandoburli.dinnerroom.service.MesaService
 import br.com.orlandoburli.dinnerroom.ui.adapter.ListMesaAdapter
 import br.com.orlandoburli.dinnerroom.utils.GARCOM_INTENT_PARAMETER
+import br.com.orlandoburli.dinnerroom.utils.MESA_INTENT_PARAMETER
 import kotlinx.android.synthetic.main.layout_principal_screen.*
 
 class TelaPrincipalActivity() : AppCompatActivity() {
 
     lateinit var garcom: Garcom
 
-    val mesaService: MesaService by lazy {
+    private val mesaService: MesaService by lazy {
         MesaService(this)
     }
 
-    val mesas: List<Mesa> by lazy {
+    private val mesas: List<Mesa> by lazy {
         mesaService.all()
     }
 
-    val listMesaAdapter: ListMesaAdapter by lazy {
-        Log.i("mesaAdapter", "Inicializando Adapter")
+    private val listMesaAdapter: ListMesaAdapter by lazy {
         ListMesaAdapter(this)
     }
 
@@ -35,8 +37,9 @@ class TelaPrincipalActivity() : AppCompatActivity() {
         if (intent.hasExtra(GARCOM_INTENT_PARAMETER)) {
             garcom = intent.getSerializableExtra(GARCOM_INTENT_PARAMETER) as Garcom
 
-            setTitle("Dinner Room - ${garcom.nome}")
+            title = "Dinner Room - ${garcom.nome}"
 
+            configuraLista()
         } else {
             finish()
         }
@@ -45,14 +48,17 @@ class TelaPrincipalActivity() : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        configuraLista()
-
         atualizaDados()
     }
 
     private fun configuraLista() {
-        Log.i("mesaAdapter", "Configurando Lista")
         lista_mesas.adapter = this.listMesaAdapter
+
+        this.listMesaAdapter.onItemClick = { posicao: Int, mesa: Mesa ->
+            val intent = Intent(this, ComandaActivity::class.java)
+            intent.putExtra(MESA_INTENT_PARAMETER, mesa)
+            startActivity(intent)
+        }
     }
 
     private fun atualizaDados() {

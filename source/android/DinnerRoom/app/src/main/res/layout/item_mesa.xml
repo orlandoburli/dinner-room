@@ -4,28 +4,43 @@
     android:layout_width="match_parent"
     android:layout_height="100dp">
 
-    <ImageView
-        android:id="@+id/item_mesa_icone"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:src="@mipmap/ic_dinner_table"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_dinner_table" />
+    <!--    <ImageView-->
+    <!--        android:id="@+id/item_mesa_icone"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_margin="8dp"-->
+    <!--        android:src="@mipmap/ic_dinner_table"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:srcCompat="@mipmap/ic_dinner_table" />-->
 
-    <TextView
+    <!--    <TextView-->
+    <!--        android:id="@+id/item_mesa_numero"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_margin="8dp"-->
+    <!--        android:text="Mesa 001"-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:textSize="18sp"-->
+    <!--        android:textStyle="bold"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/item_mesa_icone" />-->
+
+    <Button
         android:id="@+id/item_mesa_numero"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="Mesa 001"
-        android:textAlignment="center"
-        android:textSize="18sp"
+        android:layout_height="0dp"
+        android:background="@color/primaryColor"
+        android:src="@mipmap/ic_dinner_table"
+        android:text="001"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="25sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_mesa_icone" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,9 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import br.com.orlandoburli.dinnerroom.converters.BigDecimalConverter
-import br.com.orlandoburli.dinnerroom.dao.GarcomDao
-import br.com.orlandoburli.dinnerroom.dao.MesaDao
-import br.com.orlandoburli.dinnerroom.dao.ProdutoDao
+import br.com.orlandoburli.dinnerroom.dao.*
 import br.com.orlandoburli.dinnerroom.model.*
 
 @Database(
@@ -23,7 +21,7 @@ abstract class AppDatabase : RoomDatabase() {
 
     abstract fun produtoDao(): ProdutoDao
 
-    fun clearData() {
-        this.clearAllTables()
-    }
+    abstract fun comandaDao(): ComandaDao
+
+    abstract fun itemComandaDao(): ItemComandaDao
 }

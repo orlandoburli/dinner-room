@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.TelaPrincipalActivity"></activity>
+        <activity android:name=".ui.activity.SelecionarProdutoActivity" />
+        <activity android:name=".ui.activity.ComandaActivity" />
+        <activity android:name=".ui.activity.TelaPrincipalActivity" />
         <activity android:name=".ui.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

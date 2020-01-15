@@ -12,5 +12,5 @@ Desenvolver um aplicativo que seja capaz de gerenciar várias mesas, com uma ún
 ## Stacks do Projeto
 
 * Kotlin
-* Android API level 27 (minima 22) - Especificação da CIELO
+* Android API level 27 (minima 22) - Especificação da LIO v2
 * Backend (Ainda a definir)

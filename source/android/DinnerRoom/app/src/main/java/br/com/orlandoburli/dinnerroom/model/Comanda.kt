@@ -3,17 +3,18 @@ package br.com.orlandoburli.dinnerroom.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity
 class Comanda(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    val id: Long = 0,
 
     @ColumnInfo(name = "mesa_id")
-    val idMesa: Int,
+    val idMesa: Long,
 
-    val quantidadePessoas: Int = 1,
+    val quantidadePessoas: Long = 1,
 
-    val status: StatusMesa
-) {
+    val status: StatusMesa = StatusMesa.ABERTA
+) : Serializable {
 }

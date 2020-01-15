@@ -10,6 +10,8 @@ import androidx.test.rule.ActivityTestRule
 import br.com.orlandoburli.dinnerroom.BuildConfig
 import br.com.orlandoburli.dinnerroom.R
 import br.com.orlandoburli.dinnerroom.dao.GarcomDao
+import br.com.orlandoburli.dinnerroom.dao.MesaDao
+import br.com.orlandoburli.dinnerroom.database.AppDatabase
 import br.com.orlandoburli.dinnerroom.database.DbHelper
 import br.com.orlandoburli.dinnerroom.matchers.ToastMatcher
 import br.com.orlandoburli.dinnerroom.model.Garcom
@@ -20,6 +22,10 @@ import org.junit.Rule
 import org.junit.Test
 
 class LoginActivityTest {
+
+    private val db: AppDatabase by lazy { DbHelper.db(InstrumentationRegistry.getTargetContext()) }
+
+    private val garcomDao: GarcomDao by lazy { db.garcomDao() }
 
     @Rule
     @JvmField
@@ -159,11 +165,6 @@ class LoginActivityTest {
             .check(matches(isDisplayed()))
     }
 
-    private fun garcomDao(): GarcomDao {
-        val db = DbHelper.db(InstrumentationRegistry.getTargetContext())
-        val garcomDao = db.garcomDao()
-        return garcomDao
-    }
 
     private fun preencherLogin(login: String) {
         onView(withId(R.id.layout_login_screen_login))
@@ -186,28 +187,27 @@ class LoginActivityTest {
     }
 
     private fun prepararDados() {
-        val garcomDao = garcomDao()
-
-        criaGarcomJose(garcomDao)
-        criaGarcomAlex(garcomDao)
-        criaGarcomCarlos(garcomDao)
+        criaGarcomJose()
+        criaGarcomAlex()
+        criaGarcomCarlos()
     }
 
-    private fun criaGarcomJose(garcomDao: GarcomDao) {
+    private fun criaGarcomJose() {
         garcomDao.add(Garcom(nome = "José da Silva", login = "jose", senha = "123456"))
     }
 
-    private fun criaGarcomAlex(garcomDao: GarcomDao) {
+    private fun criaGarcomAlex() {
         garcomDao.add(Garcom(nome = "Alex dos Santos", login = "alex", senha = "abcdef"))
     }
 
-    private fun criaGarcomCarlos(garcomDao: GarcomDao) {
+    private fun criaGarcomCarlos() {
         garcomDao.add(Garcom(nome = "Carlos Bragança", login = "carlosb", senha = "poilkj"))
     }
 
     @After
     fun tearDown() {
         this.limpaDados()
+        this.db.close()
     }
 
     fun limpaDados() {
